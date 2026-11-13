@@ -196,7 +196,7 @@ window.addEventListener('resize', () => {
 });
 
 // Initial brand / hero entrance
-gsap.fromTo('.brand', { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 1.1, delay: 0.15, ease: 'power2.out' });
+gsap.fromTo('.brand-wrap', { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 1.1, delay: 0.15, ease: 'power2.out' });
 gsap.fromTo('.headline-wrap', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: 'power2.out' });
 
 // ==========================================================================
@@ -242,10 +242,11 @@ document.querySelectorAll('.nav-item').forEach((link) => {
   });
 });
 
-// Hide bottom navbar when scrolled into the last contact section
+// Hide bottom navbar when scrolled into the last contact section or footer
 ScrollTrigger.create({
   trigger: '#contact',
   start: 'top 85%',
+  endTrigger: '.site-footer',
   end: 'bottom bottom',
   onEnter: () => bottomNav.classList.add('is-hidden'),
   onLeaveBack: () => bottomNav.classList.remove('is-hidden'),

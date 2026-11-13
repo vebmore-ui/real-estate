@@ -91,7 +91,7 @@ button {
   pointer-events: auto;
 }
 
-.brand {
+.brand-wrap {
   position: absolute;
   z-index: 20;
   left: 50%;
@@ -100,12 +100,18 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: var(--ink);
   text-align: center;
   pointer-events: auto;
-  transition: opacity 0.25s ease;
   width: max-content;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  transition: opacity 0.25s ease;
 }
 
 .brand:hover {
@@ -127,6 +133,32 @@ button {
   color: var(--muted);
   margin-top: 3px;
   text-transform: uppercase;
+}
+
+.brand-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 5px;
+  user-select: none;
+}
+
+.brand-credit-text {
+  font-family: var(--sans);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: lowercase;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.brand-credit-logo {
+  height: 12px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .hero-center {
@@ -783,21 +815,85 @@ button {
 }
 
 .site-footer {
-  min-height: 100px;
-  padding: 28px 5vw 76px;
+  background: #1c211c;
+  color: #f5f4ef;
+  padding: 44px 5vw 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.footer-top-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  background: #20251f;
-  color: #f5f4ef;
-  font-size: 8px;
-  letter-spacing: 0.14em;
+  flex-wrap: wrap;
 }
 
 .footer-brand {
-  font: 500 16px 'Poppins', sans-serif;
-  letter-spacing: 0;
+  font: 500 17px 'Poppins', sans-serif;
+  letter-spacing: 0.02em;
+  color: #f5f4ef;
+  text-decoration: none;
+}
+
+.footer-tagline {
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  color: rgba(245, 244, 239, 0.6);
+  text-transform: uppercase;
+}
+
+.footer-back-top {
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  color: #f5f4ef;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-back-top:hover {
+  opacity: 0.65;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(245, 244, 239, 0.55);
+}
+
+.footer-dev {
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: rgba(245, 244, 239, 0.85);
+}
+
+.footer-dev strong {
+  color: #00d06c;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.footer-disclaimer {
+  color: rgba(245, 244, 239, 0.45);
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 0.02em;
 }
 
 /* ==========================================================================
@@ -808,8 +904,8 @@ button {
   .hero {
     min-height: 520px;
   }
-  .brand {
-    top: 4.2%;
+  .brand-wrap {
+    top: 3.8%;
   }
   .brand-name {
     font-size: 11px;
@@ -818,6 +914,12 @@ button {
   .brand-sub {
     font-size: 7px;
     letter-spacing: 0.18em;
+  }
+  .brand-credit-text {
+    font-size: 7.5px;
+  }
+  .brand-credit-logo {
+    height: 11px;
   }
   .hero-center {
     width: 86vw;
@@ -970,11 +1072,24 @@ button {
   }
 
   .site-footer {
-    display: flex;
+    padding: 32px 6vw 42px;
+    gap: 22px;
+  }
+  .footer-top-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding: 28px 7vw 80px;
+    gap: 10px;
+  }
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .footer-dev {
+    font-size: 10.5px;
+  }
+  .footer-disclaimer {
+    font-size: 10px;
   }
   .custom-cursor {
     display: none;
