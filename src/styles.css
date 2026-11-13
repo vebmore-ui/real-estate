@@ -26,6 +26,7 @@ body {
   font-family: var(--sans);
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body.is-scrolling {
@@ -67,7 +68,7 @@ button {
 
 .hero {
   height: 100svh;
-  min-height: 580px;
+  min-height: 560px;
   background: var(--paper);
   position: relative;
   overflow: hidden;
@@ -104,6 +105,7 @@ button {
   text-align: center;
   pointer-events: auto;
   transition: opacity 0.25s ease;
+  width: max-content;
 }
 
 .brand:hover {
@@ -135,9 +137,9 @@ button {
   transform: translate(-50%, -50%);
   text-align: center;
   pointer-events: none;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 20px;
+  width: 90vw;
+  max-width: 580px;
+  padding: 0 16px;
 }
 
 .headline-wrap {
@@ -186,11 +188,12 @@ button {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--line);
-  height: 54px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .bottom-nav.is-hidden {
@@ -202,7 +205,7 @@ button {
 .nav-inner {
   display: flex;
   align-items: center;
-  gap: clamp(28px, 6vw, 72px);
+  gap: clamp(24px, 5vw, 68px);
 }
 
 .nav-item {
@@ -342,8 +345,8 @@ button {
 }
 
 .intro {
-  padding-top: clamp(115px, 18vw, 245px);
-  padding-bottom: clamp(120px, 18vw, 235px);
+  padding-top: clamp(100px, 16vw, 220px);
+  padding-bottom: clamp(100px, 16vw, 200px);
   position: relative;
 }
 
@@ -351,6 +354,7 @@ button {
   font-size: 9px;
   letter-spacing: 0.19em;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .intro-content {
@@ -363,8 +367,8 @@ button {
 
 .intro h2,
 .features-intro h2 {
-  font: 400 clamp(60px, 9vw, 132px) / 0.88 var(--serif);
-  letter-spacing: -0.055em;
+  font: 400 clamp(54px, 8.5vw, 120px) / 0.9 var(--serif);
+  letter-spacing: -0.05em;
   margin: 0;
 }
 
@@ -376,7 +380,7 @@ button {
 }
 
 .intro-copy {
-  max-width: 300px;
+  max-width: 320px;
   padding-bottom: 8px;
 }
 
@@ -413,43 +417,52 @@ button {
   color: #8e9088;
 }
 
+/* ==========================================================================
+   HORIZONTAL PINNED GALLERY SECTION
+   ========================================================================== */
+
 .gallery-section {
-  padding: 0 0 15vw;
+  padding: 70px 0 90px;
+  position: relative;
   overflow: hidden;
+  height: 100vh;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .gallery-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 36px;
+  padding-bottom: 30px;
 }
 
 .gallery-track {
-  display: grid;
-  grid-template-columns: 8vw 31vw 10vw 25vw 8vw 29vw 7vw 23vw 10vw 30vw;
-  gap: 2vw;
+  display: flex;
+  gap: clamp(24px, 3.5vw, 48px);
   align-items: center;
   width: max-content;
   will-change: transform;
+  padding-left: 9vw;
+  padding-right: 15vw;
 }
 
 .gallery-card {
   margin: 0;
-  width: 100%;
+  width: clamp(340px, 30vw, 480px);
+  flex-shrink: 0;
 }
 
 .gallery-card .image-wrap {
   overflow: hidden;
   background: #e8e7e1;
   clip-path: inset(0);
+  aspect-ratio: 1.25;
 }
 
 .gallery-card img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1.23;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform;
@@ -459,18 +472,18 @@ button {
   transform: scale(1.035);
 }
 
-.card-b img,
-.card-d img {
-  aspect-ratio: 0.85;
+.card-b .image-wrap,
+.card-d .image-wrap {
+  aspect-ratio: 0.88;
 }
 
 .card-b,
 .card-d {
-  transform: translateY(52px);
+  transform: translateY(24px);
 }
 
 .card-c {
-  transform: translateY(-38px);
+  transform: translateY(-20px);
 }
 
 .gallery-card figcaption {
@@ -490,9 +503,13 @@ button {
   font: 500 19px var(--serif);
 }
 
+/* ==========================================================================
+   FULLBLEED & QUOTE & FEATURES
+   ========================================================================== */
+
 .fullbleed {
-  height: min(76vw, 770px);
-  min-height: 390px;
+  height: min(72vw, 720px);
+  min-height: 380px;
   position: relative;
   overflow: hidden;
   background: #d4d6ce;
@@ -508,7 +525,7 @@ button {
 
 .fullbleed-image img {
   object-fit: cover;
-  transform: scale(1.16);
+  transform: scale(1.15);
   will-change: transform;
 }
 
@@ -533,23 +550,23 @@ button {
 }
 
 .quote-section {
-  padding-top: clamp(140px, 20vw, 270px);
-  padding-bottom: clamp(145px, 21vw, 290px);
+  padding-top: clamp(120px, 18vw, 240px);
+  padding-bottom: clamp(120px, 18vw, 240px);
   position: relative;
   max-width: 1200px;
 }
 
 .quote-mark {
-  font: 120px / 0.5 var(--serif);
+  font: 110px / 0.5 var(--serif);
   color: #8c9784;
   display: block;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 
 .quote-section blockquote {
-  font: 400 clamp(42px, 6.4vw, 88px) / 0.97 var(--serif);
+  font: 400 clamp(38px, 5.8vw, 82px) / 0.98 var(--serif);
   letter-spacing: -0.035em;
-  max-width: 980px;
+  max-width: 960px;
   margin: 0;
 }
 
@@ -557,7 +574,7 @@ button {
   display: flex;
   gap: 18px;
   align-items: start;
-  margin-top: 46px;
+  margin-top: 42px;
   font-size: 9px;
   letter-spacing: 0.14em;
 }
@@ -573,8 +590,8 @@ button {
 }
 
 .features {
-  padding-top: 70px;
-  padding-bottom: 180px;
+  padding-top: 60px;
+  padding-bottom: 160px;
 }
 
 .features-intro {
@@ -582,7 +599,7 @@ button {
   grid-template-columns: 1fr 1.1fr 1fr;
   gap: 30px;
   align-items: end;
-  margin-bottom: 95px;
+  margin-bottom: 80px;
 }
 
 .features-intro .section-kicker {
@@ -590,7 +607,7 @@ button {
 }
 
 .features-intro h2 {
-  font-size: clamp(56px, 7vw, 98px);
+  font-size: clamp(52px, 6.5vw, 92px);
 }
 
 .features-intro > p {
@@ -609,11 +626,11 @@ button {
 }
 
 .feature-two {
-  margin-top: 115px;
+  margin-top: 90px;
 }
 
 .feature-three {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .feature-image {
@@ -634,7 +651,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 19px;
+  margin-top: 18px;
   font-size: 8px;
   letter-spacing: 0.14em;
   color: #676b62;
@@ -651,8 +668,8 @@ button {
 }
 
 .feature-card h3 {
-  font: 500 26px var(--serif);
-  margin: 14px 0 6px;
+  font: 500 24px var(--serif);
+  margin: 12px 0 6px;
 }
 
 .feature-card p {
@@ -663,9 +680,13 @@ button {
   margin: 0;
 }
 
+/* ==========================================================================
+   CLOSING & FOOTER
+   ========================================================================== */
+
 .closing {
-  height: min(78vw, 800px);
-  min-height: 530px;
+  height: min(78vw, 760px);
+  min-height: 520px;
   position: relative;
   overflow: hidden;
   background: #333c33;
@@ -698,6 +719,7 @@ button {
   position: relative;
   z-index: 1;
   padding-left: 12vw;
+  padding-right: 8vw;
 }
 
 .closing-content .section-kicker {
@@ -705,9 +727,9 @@ button {
 }
 
 .closing h2 {
-  font: 400 clamp(82px, 14vw, 180px) / 0.76 var(--serif);
+  font: 400 clamp(76px, 13vw, 160px) / 0.78 var(--serif);
   letter-spacing: -0.06em;
-  margin: 40px 0 25px;
+  margin: 36px 0 24px;
 }
 
 .closing h2 em {
@@ -761,8 +783,8 @@ button {
 }
 
 .site-footer {
-  min-height: 110px;
-  padding: 25px 5vw 70px;
+  min-height: 100px;
+  padding: 28px 5vw 76px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -779,159 +801,180 @@ button {
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   MOBILE RESPONSIVENESS (< 768px)
    ========================================================================== */
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .hero {
-    min-height: 560px;
+    min-height: 520px;
   }
   .brand {
-    top: 4.5%;
+    top: 4.2%;
+  }
+  .brand-name {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+  .brand-sub {
+    font-size: 7px;
+    letter-spacing: 0.18em;
+  }
+  .hero-center {
+    width: 86vw;
+    max-width: 290px;
+    padding: 0;
+  }
+  .hero-kicker {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
   }
   .headline-wrap h1 {
-    font-size: clamp(34px, 9vw, 54px);
+    font-size: clamp(30px, 8.2vw, 44px);
+    line-height: 1.05;
   }
+
   .bottom-nav {
     height: 48px;
   }
   .nav-inner {
-    gap: clamp(16px, 5vw, 32px);
+    gap: clamp(16px, 6vw, 36px);
   }
   .nav-item {
     font-size: 11px;
+    letter-spacing: 0.08em;
   }
+
   .section-pad {
     padding-left: 7vw;
     padding-right: 7vw;
   }
+
   .intro {
-    padding-top: 130px;
-    padding-bottom: 140px;
+    padding-top: 90px;
+    padding-bottom: 100px;
   }
   .intro-content {
     grid-template-columns: 1fr;
-    gap: 35px;
-    margin-top: 35px;
+    gap: 28px;
+    margin-top: 30px;
   }
   .intro h2 {
-    font-size: clamp(67px, 14vw, 105px);
+    font-size: clamp(42px, 11vw, 68px);
+    line-height: 0.94;
   }
   .intro-copy {
-    max-width: 340px;
-    margin-left: auto;
+    max-width: 100%;
+    margin-left: 0;
   }
   .intro-number {
-    right: 8vw;
-    top: 17%;
+    right: 7vw;
+    top: 14%;
+    font-size: 16px;
   }
+
+  /* Gallery on mobile */
   .gallery-section {
-    padding-bottom: 130px;
+    padding: 50px 0 70px;
+    height: 100vh;
+    min-height: 520px;
   }
   .gallery-head {
-    margin-bottom: 25px;
+    padding-bottom: 20px;
   }
   .gallery-track {
-    grid-template-columns: 5vw 64vw 7vw 54vw 6vw 62vw 5vw 52vw 6vw 60vw;
-    gap: 3vw;
+    gap: 20px;
+    padding-left: 7vw;
+    padding-right: 12vw;
   }
-  .gallery-card img {
-    aspect-ratio: 1.05;
-  }
-  .card-b img,
-  .card-d img {
-    aspect-ratio: 0.9;
+  .gallery-card {
+    width: clamp(260px, 78vw, 320px);
   }
   .card-b,
-  .card-d {
-    transform: translateY(28px);
-  }
+  .card-d,
   .card-c {
-    transform: translateY(-20px);
+    transform: none;
   }
+
   .fullbleed {
-    height: 105vw;
-    min-height: 430px;
+    height: 90vw;
+    min-height: 340px;
   }
+
   .quote-section {
-    padding-top: 140px;
-    padding-bottom: 145px;
-  }
-  .quote-section blockquote {
-    font-size: clamp(44px, 10vw, 70px);
+    padding-top: 95px;
+    padding-bottom: 100px;
   }
   .quote-mark {
-    font-size: 95px;
+    font-size: 76px;
+    margin-bottom: 16px;
   }
+  .quote-section blockquote {
+    font-size: clamp(32px, 8vw, 48px);
+    line-height: 1.04;
+  }
+
+  /* 1-column layout for features on mobile */
   .features {
-    padding-bottom: 115px;
+    padding-top: 50px;
+    padding-bottom: 100px;
   }
   .features-intro {
     grid-template-columns: 1fr;
-    gap: 22px;
-    margin-bottom: 55px;
+    gap: 18px;
+    margin-bottom: 45px;
   }
   .features-intro h2 {
-    font-size: clamp(65px, 13vw, 92px);
+    font-size: clamp(46px, 11vw, 68px);
   }
   .features-intro > p {
-    max-width: 300px;
-    margin-left: auto;
+    max-width: 100%;
   }
   .feature-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 50px 18px;
+    grid-template-columns: 1fr;
+    gap: 42px;
   }
   .feature-card {
     grid-column: span 1;
   }
-  .feature-two {
-    margin-top: 55px;
-  }
+  .feature-two,
   .feature-three {
-    margin-top: -25px;
+    margin-top: 0;
   }
   .feature-image {
-    aspect-ratio: 0.88;
+    aspect-ratio: 1.25;
   }
-  .feature-card h3 {
-    font-size: 22px;
-  }
-  .feature-card p {
-    font-size: 11px;
-  }
-  .feature-meta {
-    font-size: 7px;
-  }
-  .feature-number {
-    font-size: 20px;
-  }
+
   .closing {
-    height: 690px;
+    height: auto;
+    min-height: 560px;
+    padding: 80px 0 100px;
   }
   .closing-content {
-    padding-left: 8vw;
+    padding-left: 7vw;
+    padding-right: 7vw;
   }
   .closing h2 {
-    font-size: clamp(90px, 19vw, 140px);
+    font-size: clamp(60px, 15vw, 100px);
+    margin: 28px 0 20px;
   }
   .closing-contact-info {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
-    font-size: 13px;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 28px;
   }
   .closing-dot {
     display: none;
   }
+
   .site-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    line-height: 1.5;
-    padding-bottom: 70px;
-  }
-  .site-footer > *:nth-child(even) {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 28px 7vw 80px;
   }
   .custom-cursor {
     display: none;
@@ -940,16 +983,13 @@ button {
 
 @media (max-width: 390px) {
   .nav-inner {
-    gap: 12px;
+    gap: 14px;
   }
   .nav-item {
     font-size: 10px;
   }
-  .feature-grid {
-    gap: 42px 13px;
-  }
   .feature-card h3 {
-    font-size: 19px;
+    font-size: 20px;
   }
 }
 
